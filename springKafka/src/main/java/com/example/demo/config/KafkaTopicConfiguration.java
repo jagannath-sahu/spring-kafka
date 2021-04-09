@@ -14,11 +14,11 @@ public class KafkaTopicConfiguration {
     private final MyKafkaProperties kafkaProperties;
 
     public KafkaTopicConfiguration(MyKafkaProperties kafkaProperties) {
-		super();
-		this.kafkaProperties = kafkaProperties;
-	}
+	super();
+	this.kafkaProperties = kafkaProperties;
+    }
 
-	@Bean
+    @Bean
     public KafkaAdmin kafkaAdmin(){
         Map<String, Object> config = new HashMap<>();
         config.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getBootstrapAddress());
