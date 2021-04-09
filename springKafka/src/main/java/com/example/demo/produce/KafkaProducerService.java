@@ -10,15 +10,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import com.example.demo.model.Foo;
+
 @Service
 public class KafkaProducerService {
 
 	@Autowired
-    private KafkaTemplate kafkaTemplate;
+    private KafkaTemplate<Object,Object> kafkaTemplate;
 
     private static int runningId = 0;
 
-    public KafkaProducerService(KafkaTemplate kafkaTemplate) {
+    public KafkaProducerService(KafkaTemplate<Object,Object> kafkaTemplate) {
 		super();
 		this.kafkaTemplate = kafkaTemplate;
 	}
@@ -32,7 +34,8 @@ public class KafkaProducerService {
         System.out.println("Produce Message - BEGIN");
         String message = String.format("hello %d this is a kafka message %s", runningId++,
                 LocalDateTime.now().toString());
-        ListenableFuture listenableFuture = kafkaTemplate.send("mike", message);
+//        ListenableFuture<SendResult<Object, Object>> listenableFuture = kafkaTemplate.send("mike", message);
+        ListenableFuture<SendResult<Object, Object>> listenableFuture = kafkaTemplate.send("mike2", "Jagannath", new Foo("Krishna"));
         listenableFuture.addCallback(new ListenableFutureCallback<Object>() {
             @Override
             public void onFailure(Throwable ex) {
