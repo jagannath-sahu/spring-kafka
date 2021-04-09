@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("mykafka")
 public class MyKafkaProperties {
-    private String bootstrapAddress;
+	private String bootstrapAddress;
 
 	public String getBootstrapAddress() {
 		return bootstrapAddress;

@@ -25,11 +25,10 @@ public class KafkaProducerService {
 		this.kafkaTemplate = kafkaTemplate;
 	}
 
-	public KafkaProducerService() {
+    public KafkaProducerService() {
+    }
 
-	}
-
-	@Scheduled(fixedRate = 1000 * 10, initialDelay = 5 * 1000)
+    @Scheduled(fixedRate = 1000 * 10, initialDelay = 5 * 1000)
     public void produceMessage(){
         System.out.println("Produce Message - BEGIN");
         String message = String.format("hello %d this is a kafka message %s", runningId++,
@@ -46,7 +45,7 @@ public class KafkaProducerService {
             public void onSuccess(Object result) {
                 System.out.println("SUCCESS!!! This is the result: {}" + result);
             }
-        });
+         });
 
 
         System.out.println("Produce Message - END {}" + message);

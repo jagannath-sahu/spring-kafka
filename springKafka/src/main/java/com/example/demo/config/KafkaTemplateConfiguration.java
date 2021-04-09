@@ -15,15 +15,16 @@ import java.util.Map;
 @Configuration
 public class KafkaTemplateConfiguration {
 
-	private final MyKafkaProperties kafkaProperties;
+    private final MyKafkaProperties kafkaProperties;
 
     public KafkaTemplateConfiguration(MyKafkaProperties kafkaProperties) {
     	super();
     	this.kafkaProperties = kafkaProperties;
     }
 
-	@Bean
-    public KafkaTemplate<?, ?> kafkaTemplate(){
+
+    @Bean
+    public KafkaTemplate kafkaTemplate(){
         return new KafkaTemplate(producerFactory());
     }
 
